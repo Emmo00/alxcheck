@@ -1,0 +1,12 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+    "Flask"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88   # Adjust to your preferred line length
+target-version = ['py38']  # Specify your target Python version
+exclude = 'venv/'
