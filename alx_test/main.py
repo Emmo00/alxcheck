@@ -22,3 +22,7 @@ def main():
                 check_javascript_shebang(file_path)
                 check_no_var(file_path)
                 semistandard_check(file_path)
+
+
+if __name__ == "__main__":
+    main()

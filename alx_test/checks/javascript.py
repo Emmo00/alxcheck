@@ -1,6 +1,5 @@
-import os
 import subprocess
-from utils.error_logging import print_file_not_executable, print_no_shebang
+from utils.error_logging import print_please_install_semistandard
 
 
 def check_javascript_shebang(file_path):
@@ -13,9 +12,13 @@ def check_javascript_shebang(file_path):
 
 
 def semistandard_check(file_path):
-    result = subprocess.run(
-        ["semistandard", file_path], stdout=subprocess.STDOUT, text=True
-    )
+    try:
+        result = subprocess.run(
+            ["semistandard", file_path], stdout=subprocess.STDOUT, text=True
+        )
+    except subprocess.CalledProcessError:
+        print_please_install_semistandard()
+        return False
     return result == 0
 
 
