@@ -1,12 +1,12 @@
 from colorama import Fore
 
 
-def print_no_readme_file():
-    print(Fore.RED + "README.md file Not Found" + Fore.RESET)
+def print_file_not_present(file_path):
+    print(Fore.RED + f"{file_path} file Not Found" + Fore.RESET)
 
 
-def print_readme_file_empty():
-    print(Fore.RED + "README.md File is Empty")
+def print_file_empty(file_path):
+    print(Fore.RED + f"{file_path} File is Empty" + Fore.RESET)
 
 
 def print_no_ending_new_line(file_path):
@@ -18,7 +18,7 @@ def print_file_not_executable(file_path):
 
 
 def print_no_shebang(file_path):
-    print(Fore.RED + f"No shebang in {file_path}")
+    print(Fore.RED + f"No shebang in {file_path}" + Fore.RESET)
 
 
 def print_no_module_docstring(file_path):

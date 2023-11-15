@@ -2,24 +2,25 @@ import os
 import ast
 import subprocess
 from utils.error_logging import (
-    print_file_not_executable,
-    print_no_shebang,
     print_no_module_docstring,
     print_no_function_docstring,
     print_no_class_docstring,
 )
 
 
-def check_file_is_executable_and_python_shebang(file_path):
+def check_file_is_executable(file_path):
     flag = True
     if not os.access(file_path, os.X_OK):
         flag = False
-        print_file_not_executable(file_path)
+    return flag
+
+
+def check_python_shebang(file_path):
+    flag = True
     with open(file_path, "r") as f:
         first_line = f.readline().strip()
         if first_line not in ("#!/usr/bin/python3", "#!/usr/bin/env python3"):
             flag = False
-            print_no_shebang(file_path)
     return flag
 
 
