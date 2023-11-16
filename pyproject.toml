@@ -1,5 +1,5 @@
 [project]
-name = "alx-test"
+name = "alxcheck"
 version = "0.0.1"
 authors = [{ name="Emmanuel Nwafor", email="nwaforemmanuel005@gmail.com"}]
 description = "ALX test Suite. Shell Utility that checks for some of ALX Software Engineering Project Requirements"
@@ -28,5 +28,5 @@ target-version = ['py37']  # Specify your target Python version
 exclude = 'venv/'
 
 [project.urls]
-"Homepage" = "https://github.com/Emmo00/alx_test.git"
-"Bug Tracker" = "https://github.com/Emmo00/alx_test/issues"
+"Homepage" = "https://github.com/Emmo00/alxcheck.git"
+"Bug Tracker" = "https://github.com/Emmo00/alxcheck/issues"

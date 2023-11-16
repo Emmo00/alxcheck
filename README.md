@@ -1,17 +1,17 @@
-# alx_test
+# alxcheck
 
 ALX test Suite. Shell Utility that checks for ALX Project Requirements
 
 ## Dependencies
 
 - [`Python3`](https://www.python.org/downloads/)
-- [`betty`](https://youtu.be/wDDKOOEPED0?ref=alx_test)
+- [`betty`](https://youtu.be/wDDKOOEPED0?ref=alxcheck)
 - [`pycodestyle`](https://pycodestyle.pycqa.org/en/latest/)
 - [`semistandard`](https://www.npmjs.com/package/semistandard)
 
 ## Features
 
-`alx_test` checks for the following:
+`alxcheck` checks for the following:
 
 ### General
 
@@ -23,7 +23,7 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 
 - runs `betty` check.
 
-> Note: You would have to make sure betty is installed. Check out [How To Install Betty](https://youtu.be/wDDKOOEPED0?ref=alx_test)
+> Note: You would have to make sure betty is installed. Check out [How To Install Betty](https://youtu.be/wDDKOOEPED0?ref=alxcheck)
 
 ### Python
 
@@ -46,13 +46,13 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 ## Installation
 
 ```bash
-pip install alx_test
+pip install alxcheck
 ```
 
 or
 
 ```bash
-python3 -m pip install alx_test
+python3 -m pip install alxcheck
 ```
 
 ## Usage
@@ -60,7 +60,7 @@ python3 -m pip install alx_test
 After installation, to use this package, just run it as a shell command
 
 ```bash
-alx_test
+alxcheck
 ```
 
 This starts the checks with the current working directory as the root of the project.
