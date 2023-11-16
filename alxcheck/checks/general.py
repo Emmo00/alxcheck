@@ -18,8 +18,5 @@ def check_file_not_empty(file_path):
 def check_file_ends_with_new_lines(file_path):
     if not check_file_not_empty(file_path):
         return False
-    with open(file_path, "rb") as f:
-        last_line = f.readlines()[-1]
-        if last_line != b"\n":
-            return False
-        return True
+    with open(file_path, "r") as f:
+        return f.read()[-1] == "\n"

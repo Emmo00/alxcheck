@@ -14,7 +14,7 @@ def print_no_ending_new_line(file_path):
 
 
 def print_file_not_executable(file_path):
-    print(Fore.RED + f"{file_path} is not Executable", +Fore.RESET)
+    print(Fore.RED + f"{file_path} is not Executable" + Fore.RESET)
 
 
 def print_no_shebang(file_path):

@@ -12,10 +12,14 @@ def main():
         print_file_empty("README.md")
     betty_check()
     for root, dirs, files in os.walk("."):
+        # exclude virtual environment folders
         if "venv" in dirs:
             dirs.remove("venv")
         if "env" in dirs:
             dirs.remove("env")
+        # exclude .git folder
+        if ".git" in dirs:
+            dirs.remove(".git")
         for file in files:
             file_path = os.path.join(root, file)
             if not check_file_ends_with_new_lines(file_path):
