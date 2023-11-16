@@ -1,7 +1,7 @@
 import os
 import unittest
 from .test_general import TestGeneralChecks
-from checks import check_javascript_shebang, check_file_is_executable, check_no_var
+from ..checks import check_javascript_shebang, check_file_is_executable, check_no_var
 
 
 class TestJavascriptChecks(unittest.TestCase):

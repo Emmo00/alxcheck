@@ -1,5 +1,5 @@
 import subprocess
-from utils.error_logging import print_please_install_semistandard
+from ..utils.error_logging import print_please_install_semistandard
 
 
 def check_javascript_shebang(file_path):

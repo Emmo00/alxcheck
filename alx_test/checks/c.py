@@ -9,6 +9,6 @@ def betty_check():
             stderr=subprocess.STD_ERROR_HANDLE,
             text=True,
         )
-    except subprocess.CalledProcessError:
+    except Exception:
         return False
     return result.returncode == 0

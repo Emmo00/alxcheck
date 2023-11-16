@@ -1,5 +1,5 @@
 import os
-from checks import *
+from .checks import *
 
 
 def main():

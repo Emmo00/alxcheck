@@ -8,6 +8,8 @@ def check_file_present(file_path):
 
 
 def check_file_not_empty(file_path):
+    if not check_file_present(file_path):
+        return False
     if os.stat(file_path).st_size == 0:
         return False
     return True
@@ -16,8 +18,8 @@ def check_file_not_empty(file_path):
 def check_file_ends_with_new_lines(file_path):
     if not check_file_not_empty(file_path):
         return False
-    with open(file_path, "r") as f:
+    with open(file_path, "rb") as f:
         last_line = f.readlines()[-1]
-        if last_line != "\n":
+        if last_line != b"\n":
             return False
         return True

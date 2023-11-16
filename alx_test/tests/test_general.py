@@ -1,7 +1,7 @@
 import os
 import shutil
 import unittest
-from checks import (
+from ..checks import (
     check_file_present,
     check_file_not_empty,
     check_file_ends_with_new_lines,

@@ -1,7 +1,7 @@
 import os
 import unittest
 from .test_general import TestGeneralChecks
-from checks import check_python_shebang, check_file_is_executable
+from ..checks import check_python_shebang, check_file_is_executable
 
 
 class TestPythonChecks(unittest.TestCase):
