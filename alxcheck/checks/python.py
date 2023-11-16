@@ -61,9 +61,7 @@ def check_module_function_class_documentation(file_path):
 
 def pycodestyle_check(file_path):
     try:
-        result = subprocess.run(
-            ["pycodestyle", file_path], stdout=subprocess.STDOUT, text=True
-        )
+        result = subprocess.run(["pycodestyle", file_path])
     except Exception:
         return False
     return result == 0

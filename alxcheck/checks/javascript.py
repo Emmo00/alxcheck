@@ -13,9 +13,7 @@ def check_javascript_shebang(file_path):
 
 def semistandard_check(file_path):
     try:
-        result = subprocess.run(
-            ["semistandard", file_path], stdout=subprocess.STDOUT, text=True
-        )
+        result = subprocess.run(["semistandard", file_path])
     except Exception:
         print_please_install_semistandard()
         return False
