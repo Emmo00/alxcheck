@@ -22,13 +22,16 @@ def main():
             dirs.remove(".git")
         for file in files:
             file_path = os.path.join(root, file)
-            if not check_file_ends_with_new_lines(file_path):
-                print_no_ending_new_line(file_path)
+            if file_path.endswith(
+                (".c", ".py", ".js", ".m", ".h", ".mjs", ".jsx", ".json")
+            ):
+                if not check_file_ends_with_new_lines(file_path):
+                    print_no_ending_new_line(file_path)
             if file_path.endswith(".py"):
                 # python checks
                 if not check_file_is_executable(file_path):
                     print_file_not_executable(file_path)
-                if not check_python_shebang(file_path):
+                if file != "__init__.py" and not check_python_shebang(file_path):
                     print_no_shebang(file_path)
                 check_module_function_class_documentation(file_path)
                 pycodestyle_check(file_path)

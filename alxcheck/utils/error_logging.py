@@ -56,12 +56,19 @@ def print_please_install_betty():
     print(
         Fore.RED
         + "Please make sure "
+        + Fore.RESET
         + Back.RED
         + " Betty "
         + Back.RESET
+        + Fore.RED
         + " is Installed"
+        + Fore.RESET
     )
 
 
 def print_var_was_used(file_path):
     print(Fore.RED + f"In {file_path}, 'var' was used." + Fore.RESET)
+
+
+def print_check_docstrings(file_path):
+    print(Fore.RED + f"Error: Check docstrings in {file_path}" + Fore.RESET)

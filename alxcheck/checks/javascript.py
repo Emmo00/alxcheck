@@ -16,7 +16,7 @@ def semistandard_check(file_path):
         result = subprocess.run(
             ["semistandard", file_path], stdout=subprocess.STDOUT, text=True
         )
-    except subprocess.CalledProcessError:
+    except Exception:
         print_please_install_semistandard()
         return False
     return result == 0
