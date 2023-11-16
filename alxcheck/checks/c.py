@@ -1,10 +1,10 @@
 import subprocess
 
 
-def betty_check():
+def betty_check(file_path):
     try:
         result = subprocess.run(
-            ["betty", "*.c"],
+            ["betty", file_path],
             stdout=subprocess.STDOUT,
             stderr=subprocess.STD_ERROR_HANDLE,
             text=True,

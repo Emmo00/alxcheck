@@ -10,7 +10,6 @@ def main():
         sys.exit(1)
     if not check_file_not_empty("README.md"):
         print_file_empty("README.md")
-    betty_check()
     for root, dirs, files in os.walk("."):
         # exclude virtual environment folders
         if "venv" in dirs:
@@ -27,16 +26,19 @@ def main():
             ):
                 if not check_file_ends_with_new_lines(file_path):
                     print_no_ending_new_line(file_path)
+            # c and c header files
+            if file.endswith((".c", ".h")):
+                betty_check(file_path)
+            # python checks
             if file_path.endswith(".py"):
-                # python checks
                 if not check_file_is_executable(file_path):
                     print_file_not_executable(file_path)
                 if file != "__init__.py" and not check_python_shebang(file_path):
                     print_no_shebang(file_path)
                 check_module_function_class_documentation(file_path)
                 pycodestyle_check(file_path)
+            # javascript checks
             if file.endswith(".js"):
-                # javascript checks
                 if not check_file_is_executable(file_path):
                     print_file_not_executable(file_path)
                 if not check_javascript_shebang(file_path):

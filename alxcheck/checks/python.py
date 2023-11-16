@@ -53,7 +53,7 @@ def check_module_function_class_documentation(file_path):
                 ):
                     flag = False
                     print_no_class_docstring(file_path, node.name)
-        except (AttributeError, IndexError) as e:
+        except Exception:
             print_check_docstrings(file_path)
             return False
     return flag
