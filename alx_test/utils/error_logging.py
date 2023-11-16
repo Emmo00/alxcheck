@@ -6,7 +6,7 @@ def print_file_not_present(file_path):
 
 
 def print_file_empty(file_path):
-    print(Fore.RED + f"{file_path} File is Empty" + Fore.RESET)
+    print(Fore.RED + f"{file_path} file is Empty" + Fore.RESET)
 
 
 def print_no_ending_new_line(file_path):
@@ -28,14 +28,16 @@ def print_no_module_docstring(file_path):
 def print_no_function_docstring(file_path, function_name):
     print(
         Fore.RED
-        + f"In {file_path}, {function_name} has no Function DocString"
+        + f"In {file_path}, the {function_name} has no Function DocString"
         + Fore.RESET
     )
 
 
 def print_no_class_docstring(file_path, class_name):
     print(
-        Fore.RED + f"In {file_path}, {class_name} has no Class DocString" + Fore.RESET
+        Fore.RED
+        + f"In {file_path}, the {class_name} has no Class DocString"
+        + Fore.RESET
     )
 
 
@@ -59,3 +61,7 @@ def print_please_install_betty():
         + Back.RESET
         + " is Installed"
     )
+
+
+def print_var_was_used(file_path):
+    print(Fore.RED + f"In {file_path}, 'var' was used." + Fore.RESET)

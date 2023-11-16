@@ -1,8 +1,8 @@
 [project]
 name = "alx-test"
-version = "0.0.3"
+version = "0.0.1"
 authors = [{ name="Emmanuel Nwafor", email="nwaforemmanuel005@gmail.com"}]
-description = "ALX test Suite. Shell Utility that checks for some of ALX_SWE Project Requirements"
+description = "ALX test Suite. Shell Utility that checks for some of ALX Software Engineering Project Requirements"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
