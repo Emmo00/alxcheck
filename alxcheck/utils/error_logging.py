@@ -28,7 +28,7 @@ def print_no_module_docstring(file_path):
 def print_no_function_docstring(file_path, function_name):
     print(
         Fore.RED
-        + f"In {file_path}, the {function_name} has no Function DocString"
+        + f"In {file_path}, the {function_name} function has no Function DocString"
         + Fore.RESET
     )
 
@@ -36,7 +36,7 @@ def print_no_function_docstring(file_path, function_name):
 def print_no_class_docstring(file_path, class_name):
     print(
         Fore.RED
-        + f"In {file_path}, the {class_name} has no Class DocString"
+        + f"In {file_path}, the {class_name} class has no Class DocString"
         + Fore.RESET
     )
 
