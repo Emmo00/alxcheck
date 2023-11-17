@@ -31,7 +31,10 @@ def check_module_function_class_documentation(file_path):
         content = f.read()
         # remove shebang
         if content.startswith(b"#!"):
-            content = content.split(b"\n", 1)[1]
+            if len(content.split(b"\n")) < 2:
+                content = ""
+            else:
+                content = content.split(b"\n", 1)[1]
         tree = ast.parse(content)
         try:
             for node in ast.walk(tree):
