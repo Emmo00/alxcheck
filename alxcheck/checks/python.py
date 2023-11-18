@@ -9,6 +9,14 @@ from ..utils.error_logging import (
 )
 
 
+def check_empty_init_py(file_path):
+    if file_path.endswith(('__init__.py',)):
+        from ..checks.general import check_file_not_empty
+        if not check_file_not_empty(file_path):
+            return True
+    return False
+
+
 def check_file_is_executable(file_path):
     flag = True
     if not os.access(file_path, os.X_OK):
