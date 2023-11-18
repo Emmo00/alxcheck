@@ -1,7 +1,6 @@
-import os
 import sys
 from .checks import *
-from .utils.helpers import is_python_virtual_env_folder
+from .utils.helpers import *
 from .utils.error_logging import *
 
 
@@ -40,10 +39,11 @@ def main():
                 pycodestyle_check(file_path)
             # javascript checks
             if file.endswith(".js"):
-                if not check_file_is_executable(file_path):
-                    print_file_not_executable(file_path)
-                if not check_javascript_shebang(file_path):
-                    print_no_shebang(file_path)
+                if is_nodejs_project():
+                    if not check_file_is_executable(file_path):
+                        print_file_not_executable(file_path)
+                    if not check_javascript_shebang(file_path):
+                        print_no_shebang(file_path)
                 if not check_no_var(file_path):
                     print_var_was_used(file_path)
                 semistandard_check(file_path)
