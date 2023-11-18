@@ -22,8 +22,7 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 ### C
 
 - runs `betty` check.
-
-> Note: You would have to make sure betty is installed. Check out [How To Install Betty](https://youtu.be/wDDKOOEPED0?ref=alxcheck)
+  > Note: You would have to make sure betty is installed. Check out [How To Install Betty](https://youtu.be/wDDKOOEPED0?ref=alxcheck)
 
 ### Python
 
@@ -36,11 +35,11 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 ### JavaScript
 
 - Javascript file is executable
+  > Note: enabled with `-js` or `--nodejs-project` commandline switch. See [Usage](#usage) below
 - *shebang* is present and at the top of the file (`#!/usr/bin/node` or `#!/usr/bin/env node`)
+  > Note: enabled with `-js` or `--nodejs-project` commandline switch. See [Usage](#usage) below
 - `semistandard` check
-
-> Note: you would have to install semistandard `npm install semistandard -g`
-
+  > Note: you would have to install semistandard `npm install semistandard -g`
 - `var` is not used.
 
 ## Installation
@@ -57,13 +56,21 @@ python3 -m pip install alxcheck
 
 ## Usage
 
-After installation, to use this package, just run it as a shell command
+After installation, to use this package, just run it as a shell command. This starts the checks with the current working directory as the root of the project.
 
 ```bash
 alxcheck
 ```
 
-This starts the checks with the current working directory as the root of the project.
+If the project is a JavaScript project with node.js scripts, a commandline switch can be used to enable the first two checks [listed above](#javascript).
+
+```bash
+alxcheck -js #shorthand version
+```
+or
+```bash
+alxcheck --nodejs-project #long version
+```
 
 ## Contributing
 
