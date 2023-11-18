@@ -18,7 +18,7 @@ def check_file_not_empty(file_path):
 def check_file_ends_with_new_lines(file_path):
     if not check_file_not_empty(file_path):
         # skip empty __init__.py
-        if file_path.endswith(('__init__.py',)):
+        if file_path.endswith('__init__.py'):
             return True
         return False
     with open(file_path, "r") as f:
