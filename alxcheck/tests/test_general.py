@@ -1,6 +1,5 @@
-import os
-import shutil
 import unittest
+from .base_test import BaseTest
 from ..checks import (
     check_file_present,
     check_file_not_empty,
@@ -8,19 +7,7 @@ from ..checks import (
 )
 
 
-class TestGeneralChecks(unittest.TestCase):
-    def setUp(self) -> None:
-        super().setUp()
-        # create folder to be tested upon and set cwd
-        os.mkdir("alx-project")
-        os.chdir("alx-project")
-
-    def tearDown(self) -> None:
-        super().tearDown()
-        # delete folder and reset cwd
-        os.chdir("..")
-        shutil.rmtree("alx-project")
-
+class TestGeneralChecks(BaseTest, unittest.TestCase):
     def test_readme_present_check(self):
         self.assertFalse(check_file_present("README.md"))
         readme_fd = open("README.md", "w")
@@ -44,3 +31,7 @@ class TestGeneralChecks(unittest.TestCase):
         f.write(b"line\n\n")
         f.close()
         self.assertTrue(check_file_ends_with_new_lines("file"))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,16 +1,10 @@
 import os
 import unittest
-from .test_general import TestGeneralChecks
+from .base_test import BaseTest
 from ..checks import check_javascript_shebang, check_file_is_executable, check_no_var
 
 
-class TestJavascriptChecks(unittest.TestCase):
-    def setUp(self) -> None:
-        TestGeneralChecks().setUp()
-
-    def tearDown(self) -> None:
-        TestGeneralChecks().tearDown()
-
+class TestJavascriptChecks(BaseTest, unittest.TestCase):
     def test_javascript_shebang_check(self):
         js_file = open("script.js", "w")
         js_file.close()
@@ -35,3 +29,7 @@ class TestJavascriptChecks(unittest.TestCase):
         f.write("let a = 10;")
         f.close()
         self.assertTrue(check_no_var("script.js"))
+
+
+if __name__ == "__main__":
+    unittest.main()

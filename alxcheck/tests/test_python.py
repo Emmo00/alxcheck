@@ -1,16 +1,10 @@
 import os
 import unittest
-from .test_general import TestGeneralChecks
+from .base_test import BaseTest
 from ..checks import check_python_shebang, check_file_is_executable
 
 
-class TestPythonChecks(unittest.TestCase):
-    def setUp(self) -> None:
-        TestGeneralChecks().setUp()
-
-    def tearDown(self) -> None:
-        TestGeneralChecks().tearDown()
-
+class TestPythonChecks(BaseTest, unittest.TestCase):
     def test_python_shebang_check(self):
         py_file = open("script.py", "w")
         py_file.close()
@@ -25,3 +19,7 @@ class TestPythonChecks(unittest.TestCase):
         f.close()
         os.chmod("script.py", 0o777)
         self.assertTrue(check_file_is_executable("script.py"))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,6 +1,7 @@
 import os
 import sys
 from .checks import *
+from .utils.helpers import is_python_virtual_env_folder
 from .utils.error_logging import *
 
 
@@ -12,10 +13,10 @@ def main():
         print_file_empty("README.md")
     for root, dirs, files in os.walk("."):
         # exclude virtual environment folders
-        if "venv" in dirs:
-            dirs.remove("venv")
-        if "env" in dirs:
-            dirs.remove("env")
+        for dir in dirs:
+            if is_python_virtual_env_folder(dir):
+                dirs.remove(dir)
+                break
         # exclude .git folder
         if ".git" in dirs:
             dirs.remove(".git")
