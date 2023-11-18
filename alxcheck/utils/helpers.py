@@ -7,8 +7,8 @@ def is_python_virtual_env_folder(folder_path):
 
 
 def is_nodejs_project():
-    """Checks for node.js commandline switches"""
-    switches = ('-js', '--nodejs-checks')
+    """Checks for node.js command line switches"""
+    switches = ("-js", "--nodejs-checks")
     for switch in switches:
         if switch in sys.argv:
             return True

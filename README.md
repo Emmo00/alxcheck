@@ -35,9 +35,9 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 ### JavaScript
 
 - Javascript file is executable
-  > Note: enabled with `-js` or `--nodejs-project` commandline switch. See [Usage](#usage) below
+  > Note: enabled with `-js` or `--nodejs-project` command line switch. See [Usage](#usage) below
 - *shebang* is present and at the top of the file (`#!/usr/bin/node` or `#!/usr/bin/env node`)
-  > Note: enabled with `-js` or `--nodejs-project` commandline switch. See [Usage](#usage) below
+  > Note: enabled with `-js` or `--nodejs-project` command line switch. See [Usage](#usage) below
 - `semistandard` check
   > Note: you would have to install semistandard `npm install semistandard -g`
 - `var` is not used.
@@ -62,12 +62,14 @@ After installation, to use this package, just run it as a shell command. This st
 alxcheck
 ```
 
-If the project is a JavaScript project with node.js scripts, a commandline switch can be used to enable the first two checks [listed above](#javascript).
+If the project is a JavaScript project with node.js scripts, a command line switch can be used to enable the first two checks [listed above](#javascript).
 
 ```bash
 alxcheck -js #shorthand version
 ```
+
 or
+
 ```bash
 alxcheck --nodejs-project #long version
 ```
