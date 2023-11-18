@@ -24,13 +24,14 @@ def main():
             if file_path.endswith(
                 (".c", ".py", ".js", ".m", ".h", ".mjs", ".jsx", ".json")
             ):
-                if not check_file_ends_with_new_lines(file_path):
-                    print_no_ending_new_line(file_path)
+                if not check_file_ends_with_new_line(file_path):
+                    if not is_empty_init_py(file_path):
+                        print_no_ending_new_line(file_path)
             # c and c header files
             if file.endswith((".c", ".h")):
                 betty_check(file_path)
             # python checks
-            if file_path.endswith(".py"):
+            if file_path.endswith(".py") and not is_empty_init_py(file_path):
                 if not check_file_is_executable(file_path):
                     print_file_not_executable(file_path)
                 if file != "__init__.py" and not check_python_shebang(file_path):

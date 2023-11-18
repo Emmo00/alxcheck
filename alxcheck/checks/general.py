@@ -15,7 +15,7 @@ def check_file_not_empty(file_path):
     return True
 
 
-def check_file_ends_with_new_lines(file_path):
+def check_file_ends_with_new_line(file_path):
     if not check_file_not_empty(file_path):
         return False
     with open(file_path, "r") as f:
