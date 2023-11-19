@@ -34,7 +34,9 @@ def main():
             if file_path.endswith(".py") and not is_empty_init_py(file_path):
                 if not check_file_is_executable(file_path):
                     print_file_not_executable(file_path)
-                if file != "__init__.py" and not check_python_shebang(file_path):
+                if not is_empty_init_py(file_path) and not check_python_shebang(
+                    file_path
+                ):
                     print_no_shebang(file_path)
                 check_module_function_class_documentation(file_path)
                 pycodestyle_check(file_path)
