@@ -88,3 +88,11 @@ def print_error_parsing_file(file_path):
         )
     except Exception as e:
         print(Fore.RED + f"Error Parsing File:\n\t{type(e)}" + Fore.RESET)
+
+
+def print_uncaught_exception():
+    print(
+        Fore.YELLOW
+        + "Uncaught Exception: Please raise and issue here with the contents of './error.txt'\n\thttps://github.com/Emmo00/alxcheck/issues"
+        + Fore.RESET
+    )
