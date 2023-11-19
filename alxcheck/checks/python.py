@@ -6,6 +6,7 @@ from ..utils.error_logging import (
     print_no_function_docstring,
     print_no_class_docstring,
     print_check_docstrings,
+    print_error_parsing_file,
 )
 
 
@@ -35,8 +36,14 @@ def check_module_function_class_documentation(file_path):
                 content = ""
             else:
                 content = content.split(b"\n", 1)[1]
-        tree = ast.parse(content)
+        tree = None
         try:
+            tree = ast.parse(content)
+        except Exception:
+            print_error_parsing_file(file_path)
+        try:
+            if tree is None:
+                return
             for node in ast.walk(tree):
                 # check module docstring
                 if isinstance(node, ast.Module):

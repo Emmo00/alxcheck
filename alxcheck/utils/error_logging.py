@@ -72,3 +72,19 @@ def print_var_was_used(file_path):
 
 def print_check_docstrings(file_path):
     print(Fore.RED + f"Error: Check docstrings in {file_path}" + Fore.RESET)
+
+
+def print_error_parsing_file(file_path):
+    import ast
+
+    try:
+        with open(file_path, "r") as f:
+            ast.parse(f.read())
+    except SyntaxError as syntax_error:
+        print(
+            Fore.RED
+            + f"SyntaxError\n\tFile: {file_path}\n\tLine: {syntax_error.lineno}\tMessage: {syntax_error.msg}"
+            + Fore.RESET
+        )
+    except Exception as e:
+        print(Fore.RED + f"Error Parsing File:\n\t{type(e)}" + Fore.RESET)
