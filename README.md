@@ -31,6 +31,7 @@ ALX test Suite. Shell Utility that checks for ALX Project Requirements
 - Module documentation (docstrings)
 - Function documentation (docstrings)
 - Class documentation (docstrings)
+- Parse and check for syntax error.
 
 ### JavaScript
 
@@ -76,7 +77,7 @@ alxcheck --nodejs-project #long version
 
 ## Contributing
 
-Feel free to contribute to the project by opening issues or submitting pull requests. Your feedback is valuable!
+Feel free to contribute to the project by opening [issues](https://github.com/Emmo00/alxcheck/issues) or submitting [pull requests](https://github.com/Emmo00/alxcheck/pulls). Your feedback is valuable!
 
 ## License
 
