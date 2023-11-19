@@ -93,6 +93,6 @@ def print_error_parsing_file(file_path):
 def print_uncaught_exception():
     print(
         Fore.YELLOW
-        + "Uncaught Exception: Please raise and issue here with the contents of './error.txt'\n\thttps://github.com/Emmo00/alxcheck/issues"
+        + "Uncaught Exception: Please raise an issue here with the contents of './error.txt'\n\thttps://github.com/Emmo00/alxcheck/issues"
         + Fore.RESET
     )
