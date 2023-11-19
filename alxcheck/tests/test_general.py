@@ -3,7 +3,7 @@ from .base_test import BaseTest
 from ..checks import (
     check_file_present,
     check_file_not_empty,
-    check_file_ends_with_new_lines,
+    check_file_ends_with_new_line,
 )
 
 
@@ -26,11 +26,11 @@ class TestGeneralChecks(BaseTest, unittest.TestCase):
     def test_files_with_new_line_check(self):
         f = open("file", "w")
         f.close()
-        self.assertFalse(check_file_ends_with_new_lines("file"))
+        self.assertFalse(check_file_ends_with_new_line("file"))
         f = open("file", "wb")
         f.write(b"line\n\n")
         f.close()
-        self.assertTrue(check_file_ends_with_new_lines("file"))
+        self.assertTrue(check_file_ends_with_new_line("file"))
 
 
 if __name__ == "__main__":
