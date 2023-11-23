@@ -23,7 +23,8 @@ def main():
             for file in files:
                 file_path = os.path.join(root, file)
                 if file_path.endswith(
-                    (".c", ".py", ".js", ".m", ".h", ".mjs", ".jsx", ".json")
+                    (".c", ".py", ".js", ".m", ".h",
+                     ".mjs", ".jsx", ".json", ".md")
                 ):
                     if not check_file_ends_with_new_line(file_path):
                         if not is_empty_init_py(file_path):
