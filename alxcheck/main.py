@@ -1,84 +1,64 @@
 import sys
-import argparse
 from .checks import *
 from .utils.helpers import *
 from .utils.error_logging import *
 
-
-def autoproto(directory, header):
-    if not check_directory(directory) or not check_header_file(header):
-        sys.exit(1)
-
-    if not check_ctags():
-        print("ctags is not installed. Please install ctags before running this script.")
-        sys.exit(1)
-
-    generate_tags(directory)
-    filtered_tags = filter_tags(directory, 'tags')
-    create_header(header, filtered_tags)
-    delete_files('tags', 'temp_tags')
-
-
 def main():
-    if len(sys.argv) > 1 and (sys.argv[1] == '-D' or sys.argv[1] == '-H'):
-            # If -d or -H options are provided, execute autoproto
-            parser = argparse.ArgumentParser(description='Generate and filter tags, then create a header file.')
-            parser.add_argument('-D', '--directory', required=True, help='Directory to check and generate tags.')
-            parser.add_argument('-H', '--header', required=True, help='Output header file.')
-            args = parser.parse_args()
-            autoproto(args.directory, args.header)
     
-    else:
-        try:
-            if not check_file_present("README.md"):
-                print_file_not_present("README.md")
-                sys.exit(1)
-            if not check_file_not_empty("README.md"):
-                print_file_empty("README.md")
-            for root, dirs, files in os.walk("."):
-                # exclude virtual environment folders
-                for dir in dirs:
-                    if is_python_virtual_env_folder(dir):
-                        dirs.remove(dir)
-                        break
-                # exclude .git folder
-                if ".git" in dirs:
-                    dirs.remove(".git")
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    if file_path.endswith(
-                        (".c", ".py", ".js", ".m", ".h", ".mjs", ".jsx", ".json")
-                    ):
-                        if not check_file_ends_with_new_line(file_path):
-                            if not is_empty_init_py(file_path):
-                                print_no_ending_new_line(file_path)
-                    # c and c header files
-                    if file.endswith((".c", ".h")):
-                        betty_check(file_path)
-                    # python checks
-                    if file_path.endswith(".py") and not is_empty_init_py(file_path):
-                        if not check_file_is_executable(file_path):
-                            print_file_not_executable(file_path)
-                        if not is_empty_init_py(file_path) and not check_python_shebang(
-                            file_path
-                        ):
-                            print_no_shebang(file_path)
-                        check_module_function_class_documentation(file_path)
-                        pycodestyle_check(file_path)
-                    # javascript checks
-                    if file.endswith(".js"):
-                        if is_nodejs_project():
-                            if not check_file_is_executable(file_path):
-                                print_file_not_executable(file_path)
-                            if not check_javascript_shebang(file_path):
-                                print_no_shebang(file_path)
-                        if not check_no_var(file_path):
-                            print_var_was_used(file_path)
-                        semistandard_check(file_path)
-        except Exception as e:
-            print_uncaught_exception()
-            sys.stderr = open("./error.txt", "w")
-            raise
+    if not check_file_present("README.md"):
+        print_file_not_present("README.md")
+        sys.exit(1)
+    if not check_file_not_empty("README.md"):
+        print_file_empty("README.md")
+    for root, dirs, files in os.walk("."):
+        # exclude virtual environment folders
+        for dir in dirs:
+            if is_python_virtual_env_folder(dir):
+                dirs.remove(dir)
+                break
+        # exclude .git folder
+        if ".git" in dirs:
+            dirs.remove(".git")
+        for file in files:
+            file_path = os.path.join(root, file)
+            if file_path.endswith(
+                (".c", ".py", ".js", ".m", ".h", ".mjs", ".jsx", ".json")
+            ):
+                if not check_file_ends_with_new_line(file_path):
+                    if not is_empty_init_py(file_path):
+                        print_no_ending_new_line(file_path)
+            # c and c header files
+            if file.endswith((".c", ".h")):
+                v=betty_check(file_path)
+                if "-D" in sys.argv and "-H" in sys.argv:
+                    if (v == False):
+                        print_check_betty_first()
+                    else:
+                        directory = sys.argv[sys.argv.index("-D") + 1]
+                        header = sys.argv[sys.argv.index("-H") + 1]
+                        autoproto(directory, header)
+                elif ("-D" in sys.argv or "-H" in sys.argv):
+                    print_dir_header_error("Usage: -D/-H Together");              
+            # python checks
+            if file_path.endswith(".py") and not is_empty_init_py(file_path):
+                if not check_file_is_executable(file_path):
+                    print_file_not_executable(file_path)
+                if not is_empty_init_py(file_path) and not check_python_shebang(
+                    file_path
+                ):
+                    print_no_shebang(file_path)
+                check_module_function_class_documentation(file_path)
+                pycodestyle_check(file_path)
+            # javascript checks
+            if file.endswith(".js"):
+                if is_nodejs_project():
+                    if not check_file_is_executable(file_path):
+                        print_file_not_executable(file_path)
+                    if not check_javascript_shebang(file_path):
+                        print_no_shebang(file_path)
+                if not check_no_var(file_path):
+                    print_var_was_used(file_path)
+                semistandard_check(file_path)
 
 
 if __name__ == "__main__":

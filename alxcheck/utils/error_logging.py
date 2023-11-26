@@ -96,3 +96,10 @@ def print_uncaught_exception():
         + "Uncaught Exception: Please raise an issue here with the contents of './error.txt'\n\thttps://github.com/Emmo00/alxcheck/issues"
         + Fore.RESET
     )
+## auto checks errors
+def print_check_betty_first():
+    print(Fore.YELLOW + "+++++++++++++++++++++++++++++++++++++++++++++++" + Fore.RESET)
+    print(Fore.RED + "You should check betty first before using -D/-H" + Fore.RESET)
+def print_dir_header_error(msg):
+    print(Fore.YELLOW + "+++++++++++++++++++++++++++++++++++++++++++++++" + Fore.RESET)
+    print(Fore.RED + msg + Fore.RESET)

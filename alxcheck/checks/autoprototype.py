@@ -2,17 +2,22 @@ import argparse
 import subprocess
 import os
 import re
-
+from ..utils.error_logging import print_check_betty_first, print_dir_header_error
 def check_ctags():
     try:
         subprocess.run(['ctags', '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-        return True
+        return True, None
     except subprocess.CalledProcessError:
-        return False
+        msg = "ctags is not installed. Please install ctags before running this script."
+        return False, msg
 
 def generate_tags(directory):
-    subprocess.run(['ctags', '-R', '--c-kinds=+p', '--fields=+S', '--extra=+q', directory], check=True)
-
+    try:
+        subprocess.run(['ctags', '-R', '--c-kinds=+p', '--fields=+S', '--extra=+q', '--languages=c', f'--langmap=c:.c', directory], check=True)
+        return True
+    except subprocess.CalledProcessError as e:
+        print_dir_header_error(f"Error generating ctags: {e}")
+        return False
 def filter_tags(directory,tags_file):
     temp_tags_path = os.path.join(directory,'temp_tags')
     tags_path = os.path.join(directory,tags_file)
@@ -29,14 +34,9 @@ def filter_tags(directory,tags_file):
         return filtered_tags
     else:
         # Handle the case where the file doesn't exist
-        print(f"Error: File {temp_tags_path} does not exist.")
+        msg =f"Error: File {temp_tags_path} does not exist."
+        print_dir_header_error(msg)
         return None
-
-    # Read the filtered tags from the temporary file
-    with open('temp_tags', 'r') as temp_tags_file:
-        filtered_tags = temp_tags_file.read()
-    return filtered_tags
-
 
 def create_header(header_file, filtered_tags):
     header_name = header_file.split('/')[-1]
@@ -52,12 +52,30 @@ def delete_files(tags, temp_tags):
     subprocess.run(command, shell=True, check=True)
 def check_directory(directory):
     if not os.path.exists(directory):
-        print(f"Error: Directory '{directory}' does not exist.")
-        return False
-    return True
+        msg = f"Error: Directory '{directory}' does not exist."
+        return False , msg
+    return True, None
 
 def check_header_file(header_file):
     if not header_file.endswith('.h'):
-        print(f"Error: Invalid header file. It should have a '.h' extension.")
-        return False
-    return True
+        
+        msg = "Error: Invalid header file. It should have a '.h' extension."
+        return False , msg 
+    return True, None
+def autoproto(directory, header):
+        check0, msg0=check_directory(directory)
+        check1, msg1=check_header_file(header)
+        check2, msg2=check_ctags()
+        if (not check0):
+            print_dir_header_error(msg0)
+        elif (not check1):
+            print_dir_header_error(msg1)
+
+        elif (not check2):
+            print_dir_header_error(msg2)
+
+        if generate_tags(directory) != False:
+            filtered_tags = filter_tags(directory, 'tags')
+            if filtered_tags != None: 
+                create_header(header, filtered_tags)
+                delete_files('tags', 'temp_tags')
