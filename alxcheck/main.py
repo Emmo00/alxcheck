@@ -11,6 +11,8 @@ def main():
             sys.exit(1)
         if not check_file_not_empty("README.md"):
             print_file_empty("README.md")
+        if not check_file_ends_with_new_line("README.md"):
+            print_no_ending_new_line("README.md")
         for root, dirs, files in os.walk("."):
             # exclude virtual environment folders
             for dir in dirs:
@@ -24,7 +26,7 @@ def main():
                 file_path = os.path.join(root, file)
                 if file_path.endswith(
                     (".c", ".py", ".js", ".m", ".h",
-                     ".mjs", ".jsx", ".json", ".md")
+                     ".mjs", ".jsx", ".json")
                 ):
                     if not check_file_ends_with_new_line(file_path):
                         if not is_empty_init_py(file_path):
