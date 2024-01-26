@@ -1,23 +1,6 @@
-[project]
-name = "alxcheck"
-version = "0.1.2"
-authors = [{ name="Emmanuel Nwafor", email="nwaforemmanuel005@gmail.com"}]
-description = "ALX text suite. Shell Utility that checks files for ALX's Project Requirements. Including: General, C, JavaScript and Python projects"
-readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Environment :: Console",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-]
-keywords = ["alx", "alx test", "test", "checks", "test suite", "green squares"]
-
 [build-system]
 requires = [
-    "setuptools>=42",
+    "setuptools",
     "wheel",
 ]
 build-backend = "setuptools.build_meta"
